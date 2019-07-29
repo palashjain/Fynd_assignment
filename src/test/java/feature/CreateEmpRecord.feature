@@ -13,14 +13,14 @@ Then status 200
 And match response.error == { "text": "SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'employee_name' cannot be null"}
 
 Given path 'create'
-And request '{"name":"test341"}'
+And request '{"name":"test142"}'
 And header Accept = 'application/json'
 When method post
 Then status 200
 And match response.error == { "text": "SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'employee_salary' cannot be null"}
 
 Given path 'create'
-And request {"name":"test3131","salary":"123"}
+And request {"name":"test31","salary":"123"}
 And header Accept = 'application/json'
 When method post
 Then status 200
@@ -28,7 +28,7 @@ And match response.error == { "text": "SQLSTATE[23000]: Integrity constraint vio
 				
 Scenario: Pass the duplicate request data 
 
-* def GetEmployeeData = call read('GetSingleEmployeeRecord.feature@EmployeeExistsTag')
+* def GetEmployeeData = call read('GetSingleEmpRecord.feature@EmployeeExistsTag')
 * def EmployeeData = GetEmployeeData.response
 
 * string name = EmployeeData.employee_name
@@ -50,7 +50,7 @@ And match response.error != {}
 Scenario: pass Correct request data to the request
 
 Given path 'create'
-* def RequestData = read('PostRequestValidData.json')
+* def RequestData = read('PostRequest_ValidData.json')
 And request {"name":'#(RequestData.name)',"salary" : #(RequestData.salary),"age": #(RequestData.age)}
 And header Accept = 'application/json'
 When method post

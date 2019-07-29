@@ -7,11 +7,11 @@ Scenario: Pass -ve id and check api behavior
 
 Given path 'delete',-1
 When method delete
-Then status 400
+Then status 200
 
 Scenario: Delete specific record
 
-* def GetEmployeeData = call read('GetAllEmployeesRecord.feature@GetAllEmployeeInfoTag')
+* def GetEmployeeData = call read('GetAllEmpRecords.feature@GetAllEmployeeInfoTag')
 * def EmployeeData = GetEmployeeData.response
 
 Given path 'delete', EmployeeData[0].id

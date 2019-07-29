@@ -36,7 +36,7 @@ Scenario: Check behavior when we give 0 as user id
 Given path 'employee',0
 When method get
 Then status 200
-And match response == read('GetResponseForIdZero.txt')
+And match response == read('GetResponseFor_IDZero.txt')
 
 Scenario: Check when we won't pass the parameter
 
